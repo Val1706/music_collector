@@ -10,18 +10,18 @@ while True:
     with open('music.csv', 'r') as f:
         read_csv = csv.reader(f, delimiter="|")
 
-        def spc(n):
+        def no_space(n):
             n = n.strip(" ").upper()
             return n
 
         for row in read_csv:
-
-            artist = spc(row[0])
-            album = spc(row[1])
-            year = spc(row[2])
-            genre = spc(row[3])
-            time = spc(row[4])
-
+            row = list(map(no_space, row))
+            artist = row[0]
+            album = row[1]
+            year = row[2]
+            genre = row[3]
+            time = row[4]
+            
             name_tuple = (artist, album)
             info_tuple = (year, genre, time)
             global_tuple = (name_tuple, info_tuple)
